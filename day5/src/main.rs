@@ -1,5 +1,5 @@
 use std::{
-    cmp::max,
+    cmp::{min, max},
     io::{BufRead, stdin},
 };
 
@@ -24,11 +24,10 @@ fn main() {
         mask ^= id;
 
         max_id = max(id, max_id);
-        min_id = max(id, min_id);
+        min_id = min(id, min_id);
     }
 
-    for id in (0..min_id)
-        .chain((max_id+1)..1024) {
+    for id in (min_id..=max_id) {
         mask ^= id
     }
 
